@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'source-map',
 
   entry: [
-    path.resolve(__dirname, 'src/index.ts'),
+    path.resolve(__dirname, 'src/index.tsx'),
     path.resolve(__dirname, 'css/app.css'),
   ],
 
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
 
   plugins: [
@@ -37,16 +37,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         enforce: 'pre',
         loader: 'tslint-loader',
         options: { emitErrors: true },
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: [
-          'source-map-loader',
-          'ts-loader',
+          // 'source-map-loader',
+          'awesome-typescript-loader',
         ],
       },
       {
